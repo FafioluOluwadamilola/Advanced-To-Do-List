@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    height: 100vh;
+    @apply bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-900
+  }
+}
+
+@layer components {
+  .container {
+    @apply w-full h-auto bg-[#FBF4FE]/90 rounded-lg p-6
+  }
+  .header {
+    @apply flex justify-between
+  }
+}
