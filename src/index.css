@@ -15,7 +15,13 @@
   .container {
     @apply w-full h-auto bg-[#FBF4FE]/90 rounded-lg p-6
   }
+  .background{
+    @apply p-3 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-2xl shadow-lg 
+  }
   .header {
-    @apply flex justify-between
+    @apply mb-6 flex items-center justify-between
+  }
+  .header .leftside {
+    @apply flex items-start justify-start gap-4
   }
 }

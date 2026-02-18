@@ -1,16 +1,34 @@
 import React from 'react'
 import Buttons from './ui/buttons'
+import { motion } from 'framer-motion'
+import { Sparkles } from 'lucide-react'
 
 const Header = () => {
     return (
-        <div className='header'>
-            <div>
-                <h1 className='text-3xl font-bold'>TaskFlow Pro</h1>
-                <p>Organize your life with style and efficiency ✨</p>
+        <div className="header">
+            <div className="leftside">
+
+                <motion.div 
+                    whileHover={{ scale: 1.05, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    className='background'
+                >
+                        <Sparkles className=" size-7 text-white" />
+                </motion.div>
+
+                <div>
+                    <h1 className="text-3xl font-bold text-purple-700 text-left">
+                        TaskFlow Pro
+                    </h1>
+                    <p className="text-gray-500">
+                        Organize your life with style and efficiency ✨
+                    </p>
+                </div>
+
             </div>
-            <div>
-                <Buttons>New Task</Buttons>
-            </div>
+
+            {/* RIGHT SIDE */}
+            <Buttons>New Task</Buttons>
         </div>
     )
 }
