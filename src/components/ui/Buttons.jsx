@@ -3,15 +3,16 @@ import { motion } from 'framer-motion'
 
 const buttons = ({
     children,
-    stiffness = 900,
+    stiffness = 700,
     damping = 20,
+    className
 }) => {
     return (
         <div>
             <motion.button
-                className='bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white'
-                whileHover={{ scale: 1.1, y: -2}}
-                whileTap={{ scale: 1.2, y: 1}}
+                className={`bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white p-2 rounded-lg ${className || ''}`}
+                whileHover={{ scale: 1.1}}
+                whileTap={{ scale: 0.9}}
                 transition={{ type: "spring", stiffness, damping }}
             >
                 {children}

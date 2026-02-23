@@ -1,7 +1,7 @@
 import React from 'react'
 import Buttons from './ui/buttons'
 import { motion } from 'framer-motion'
-import { Sparkles } from 'lucide-react'
+import { Sparkles, Plus } from 'lucide-react'
 
 const Header = () => {
     return (
@@ -28,7 +28,10 @@ const Header = () => {
             </div>
 
             {/* RIGHT SIDE */}
-            <Buttons>New Task</Buttons>
+            <Buttons className="flex items-center gap-2">
+                <Plus className="size-5" />
+                New Task
+            </Buttons>
         </div>
     )
 }
