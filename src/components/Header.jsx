@@ -28,7 +28,7 @@ const Header = () => {
             </div>
 
             {/* RIGHT SIDE */}
-            <Buttons className="flex items-center gap-2">
+            <Buttons className=" flex gap-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white shadow-lg shadow-violet-500/50">
                 <Plus className="size-5" />
                 New Task
             </Buttons>

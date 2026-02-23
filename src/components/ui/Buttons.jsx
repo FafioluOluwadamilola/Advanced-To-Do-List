@@ -10,7 +10,7 @@ const buttons = ({
     return (
         <div>
             <motion.button
-                className={`bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white p-2 rounded-lg ${className || ''}`}
+                className={`text-white p-2 rounded-lg ${className || ''}`}
                 whileHover={{ scale: 1.1}}
                 whileTap={{ scale: 0.9}}
                 transition={{ type: "spring", stiffness, damping }}

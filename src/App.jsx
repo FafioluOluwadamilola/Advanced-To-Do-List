@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Header from './components/Header'
 import TaskState from './components/TaskState'
+import CreateTask from './components/CreateTask'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +17,8 @@ function App() {
         <Header />
 
         <TaskState />
+
+        <CreateTask />
 
       </div>
     </div>
