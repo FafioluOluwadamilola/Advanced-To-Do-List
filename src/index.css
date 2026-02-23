@@ -26,7 +26,7 @@
     @apply flex items-start justify-start gap-4
   }
   .task-creation{
-    @apply sm:max-w-[550px] m-4 p-4 bg-gradient-to-br from-white to-purple-50/30 border border-purple-100 gap-4 rounded-lg shadow-lg shadow-purple-300/50
+    @apply sm:max-w-[550px] m-4 p-4 bg-white/10 backdrop-blur-xl z-50 border border-purple-100 gap-4 rounded-lg shadow-lg shadow-purple-400
   }
   .background-clip{
     @apply text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600
