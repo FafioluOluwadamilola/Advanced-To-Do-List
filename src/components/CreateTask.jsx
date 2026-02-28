@@ -4,9 +4,12 @@ import { useState } from 'react';
 import Buttons from '../components/ui/Buttons';
 import React from 'react'
 
-const CreateTask = ({ closeModal }) => {
+const CreateTask = ({ closeModal, addTask }) => {
 
     const [selectedButton, setSelectedButton] = useState("work")
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+
 
     const categories = [
         { id: "work", label: "💼 Work" },
@@ -50,6 +53,7 @@ const CreateTask = ({ closeModal }) => {
 
                         <input
                             type="text"
+                            onChange={(e) => setTitle(e.target.value)}
                             placeholder="Complete the Design Mockups...."
                             className="w-full p-3 border border-gray-400 outline-none rounded-lg bg-white/50 transition-all duration-300 focus:shadow-[0_0_20px_rgba(128,128,128,0.4)]" />
                     </motion.div>
@@ -62,9 +66,10 @@ const CreateTask = ({ closeModal }) => {
                     >
                         <label className='text-left text-sm font-medium text-gray-700'>Description</label>
                         <textarea
-                            type="text"
-                            placeholder="Add more notes or details about this task."
                             rows={4}
+                            type="text"
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="Add more notes or details about this task."
                             className=" w-full p-3 bg-white/50 rounded-lg border border-gray-400 outline-none transition-all duration-300 focus:shadow-[0_0_20px_rgba(128,128,128,0.4)]" />
                     </motion.div>
 
@@ -93,7 +98,25 @@ const CreateTask = ({ closeModal }) => {
 
                 <div className='submit'>
                     <Buttons className='bg-white font-[32px] p-3 text-black'>Cancel</Buttons>
-                    <Buttons className='text-white p-3 bg-gradient-to-r from-violet-600 to-fuchsia-600' onClick={closeModal}>
+                    <Buttons 
+                        className='text-white p-3 bg-gradient-to-r from-violet-600 to-fuchsia-600' 
+                        onClick={() => {
+                            if(!title.trim()) return
+
+                            const newTask = {
+                                title,
+                                description,
+                                category: selectedButton,
+                                status: "Active"
+                            }
+
+                            addTask(newTask)
+
+                            setTitle("")
+                            setDescription("")
+                            closeModal()
+
+                        }}>
                         ✨ Create Task
                     </Buttons>
                 </div>

@@ -11,6 +11,31 @@ function App() {
 
   const [isTaskOpen, setIsTaskOpen] = useState(false)
 
+  const [tasks, setTasks] = useState([
+    {
+      title: "Finish React Project",
+      description: "Complete the to-do application with all features and styling.",
+      category: "Work",
+      status: "Completed"
+    },
+    {
+      title: "Grocery Shopping",
+      description: "Buy ingredients for the week: milk, eggs, bread, and vegetables.",
+      category: "Personal",
+      status: "Active"
+    },
+    {
+      title: "Doctor's Appointment",
+      description: "Annual check-up at the clinic.",
+      category: "Health",
+      status: "Active"
+    }
+  ])
+
+  const addTask = (newTask) => {
+    setTasks((prevTasks) => [newTask, ...prevTasks])
+  }
+
 
   return (
 
@@ -27,14 +52,21 @@ function App() {
         <TaskState />
 
         {isTaskOpen &&
-          <div className='h-screen fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm' onClick={() => setIsTaskOpen(false)}>
-            <CreateTask closeModal={() => setIsTaskOpen(false)}/>
+          <div
+            className='h-screen fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm'
+            onClick={() => setIsTaskOpen(false)}>
+            <div onClick={(e) => e.stopPropagation()}>
+              <CreateTask
+                closeModal={() => setIsTaskOpen(false)}
+                addTask={addTask}
+              />
+            </div>
           </div>
         }
 
         <Categories />
 
-        <MadeTasks />
+        <MadeTasks tasks={tasks} />
 
       </div>
     </motion.div>
