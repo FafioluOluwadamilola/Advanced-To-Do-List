@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { CircleCheck, Target, TrendingUp } from 'lucide-react';
 
-const TaskState = () => {
+const TaskState = ({ tasks, filter, setFilter }) => {
   return (
     <div className='grid grid-cols-1 gap-4 mt-6 relative md:grid-cols-3'>
 
@@ -15,7 +15,9 @@ const TaskState = () => {
 
           <div>
             <p className="text-sm text-gray-600 font-medium">Active Tasks</p>
-            <p className='text-left text-violet-600 text-3xl font-bold mt-1'>12</p>
+            <p className='text-left text-violet-600 text-3xl font-bold mt-1'>
+              {tasks.filter(task => task.status === "Active").length}
+            </p>
           </div>
 
           <div className='p-3 bg-violet-100 rounded-xl'>
@@ -36,7 +38,9 @@ const TaskState = () => {
 
           <div>
             <p className="text-sm text-gray-600 font-medium">Completed</p>
-            <p className='text-left text-emerald-600 text-3xl font-bold mt-1'>12</p>
+            <p className='text-left text-emerald-600 text-3xl font-bold mt-1'>
+              {tasks.filter(task => task.status === "Completed").length}
+            </p>
           </div>
 
           <div className='p-3 bg-emerald-100 rounded-xl'>
@@ -55,8 +59,10 @@ const TaskState = () => {
         <div className='flex justify-between items-center'>
 
           <div>
-            <p className="text-sm text-gray-600 font-medium">Completed</p>
-            <p className='text-left text-amber-600 text-3xl font-bold mt-1'>12%</p>
+            <p className="text-sm text-gray-600 font-medium">Completion Rate</p>
+            <p className='text-left text-amber-600 text-3xl font-bold mt-1'>
+              {tasks.length > 0 ? ((tasks.filter(task => task.status === "Completed").length / tasks.length) * 100).toFixed(0) : 0}%
+            </p>
           </div>
 
           <div className='p-3 bg-amber-100 rounded-xl'>

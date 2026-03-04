@@ -13,18 +13,21 @@ function App() {
 
   const [tasks, setTasks] = useState([
     {
+      id: 1,
       title: "Finish React Project",
       description: "Complete the to-do application with all features and styling.",
       category: "Work",
       status: "Completed"
     },
     {
+      id: 2,
       title: "Grocery Shopping",
       description: "Buy ingredients for the week: milk, eggs, bread, and vegetables.",
       category: "Personal",
       status: "Active"
     },
     {
+      id: 3,
       title: "Doctor's Appointment",
       description: "Annual check-up at the clinic.",
       category: "Health",
@@ -32,8 +35,33 @@ function App() {
     }
   ])
 
+  
+
   const addTask = (newTask) => {
     setTasks((prevTasks) => [newTask, ...prevTasks])
+  }
+
+
+  const [filter, setFilter] = useState("All")
+
+  const visibleTasks = tasks.filter(task => {
+    if (filter === "All") return true;
+    if (filter === "Active") return task.status === "Active";
+    if (filter === "Completed") return task.status === "Completed";
+
+    return task.category.toLowerCase() === filter.toLowerCase();
+  })  
+
+
+  const toggleTaskStatus = (id) => {
+    setTasks(prevTasks => prevTasks.map(task => 
+      task.id === id ? 
+      {
+        ...task,
+        status: task.status === "Active" ? "Completed" : "Active"
+      } : task
+    ))
+
   }
 
 
@@ -49,7 +77,11 @@ function App() {
 
         <Header OpenModal={() => setIsTaskOpen(true)} />
 
-        <TaskState />
+        <TaskState  
+          tasks={tasks}
+          filter={filter}
+          setFilter={setFilter}
+        />
 
         {isTaskOpen &&
           <div
@@ -64,9 +96,9 @@ function App() {
           </div>
         }
 
-        <Categories />
+        <Categories filter={filter} setFilter={setFilter} />
 
-        <MadeTasks tasks={tasks} />
+        <MadeTasks tasks={visibleTasks}  toggleTaskStatus={toggleTaskStatus}/>
 
       </div>
     </motion.div>

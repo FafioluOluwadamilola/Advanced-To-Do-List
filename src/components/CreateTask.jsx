@@ -104,6 +104,7 @@ const CreateTask = ({ closeModal, addTask }) => {
                             if(!title.trim()) return
 
                             const newTask = {
+                                id: Date.now(),
                                 title,
                                 description,
                                 category: selectedButton,
