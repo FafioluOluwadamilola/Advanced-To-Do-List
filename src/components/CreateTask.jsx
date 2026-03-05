@@ -3,22 +3,14 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Buttons from '../components/ui/Buttons';
 import React from 'react'
+import { categories } from '../data/categories';
 
 const CreateTask = ({ closeModal, addTask }) => {
 
-    const [selectedButton, setSelectedButton] = useState("work")
+    const [selectedButton, setSelectedButton] = useState("Work")
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
 
-
-    const categories = [
-        { id: "work", label: "💼 Work" },
-        { id: "personal", label: "🏠 Personal" },
-        { id: "urgent", label: "🚨 Urgent" },
-        { id: "learning", label: "📚 Learning" },
-        { id: "health", label: "🏥 Health" },
-        { id: "finance", label: "💰 Finance" },
-    ]
 
     return (
 
@@ -79,15 +71,15 @@ const CreateTask = ({ closeModal, addTask }) => {
                 <div className='grid grid-cols-3 gap-3 mt-3 p-2'>
                     {categories.map((cat) => (
                         <motion.div
-                            key={cat.id}
+                            key={cat.name}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.3, type: "spring", stiffness: 700, damping: 40 }}
                             whileTap={{ scale: 0.9 }}
                             whileHover={{ scale: 1.05 }}
                             className={`px-4 py-2 rounded-lg font-medium cursor-pointer
-                                ${selectedButton === cat.id ? "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-purple-500/30" : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"}`}
-                            onClick={() => setSelectedButton(cat.id)}
+                                ${selectedButton === cat.name ? "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-purple-500/30" : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"}`}
+                            onClick={() => setSelectedButton(cat.name)}
                         >
                             {cat.label}
                         </motion.div>
@@ -97,9 +89,9 @@ const CreateTask = ({ closeModal, addTask }) => {
 
 
                 <div className='submit'>
-                    <Buttons className='bg-white font-[32px] p-3 text-black'>Cancel</Buttons>
+                    <Buttons onClick={closeModal} className='bg-white font-[32px] p-3 text-black cursor-pointer'>Cancel</Buttons>
                     <Buttons 
-                        className='text-white p-3 bg-gradient-to-r from-violet-600 to-fuchsia-600' 
+                        className='text-white p-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 cursor-pointer' 
                         onClick={() => {
                             if(!title.trim()) return
 

@@ -1,13 +1,19 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { categories } from '../data/categories'
 
 const MadeTasks = ({ tasks, toggleTaskStatus }) => {
+
 
     return (
 
         <div className="task-container">
             <div>
-                {tasks.map((task) => (
+                {tasks.map((task) => {
+                    const getCategoryColor  = categories.find(cat => cat.name === task.category)
+
+
+                return (
                     <motion.div
                         key={task.id}
                         initial={{ opacity: 0, y: 20 }}
@@ -19,13 +25,19 @@ const MadeTasks = ({ tasks, toggleTaskStatus }) => {
                         <div className='flex items-center gap-4'>
                             <input 
                                 type="checkbox"
-                                checked={task.status === "Completed"}
+                                checked={task.status === "Completed" }
                                 onChange={() => toggleTaskStatus(task.id)}
                                 className="w-4 h-4 bg-gradient-to-br from-violet-600 to-fuchsia-600 border-gray-300 rounded"
                             />
                             <h2 className='text-lg font-semibold'>{task.title}</h2>
 
-                            <div className='bg-red-200 text-gray-700 px-3 py-1 rounded-full text-sm font-medium'>
+                            
+
+                            <div className={`
+                                ${getCategoryColor?.styles.bg}
+                                ${getCategoryColor?.styles.text}
+                                ${getCategoryColor?.styles.border}
+                                 border text-gray-700 px-3 py-1 text-xs rounded-2xl font-semibold shadow-sm`}>
                                 {task.category}
                             </div>
                             
@@ -35,7 +47,8 @@ const MadeTasks = ({ tasks, toggleTaskStatus }) => {
                             <p className='text-sm text-gray-600'>{task.description}</p>
                         </div>
                     </motion.div>
-                ))}
+                    )
+                })}
             </div>
         </div>
     )

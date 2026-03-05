@@ -1,76 +1,63 @@
 // import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { CircleCheck } from 'lucide-react'
+import { label } from 'motion/react-client'
+import { categories } from '../data/categories'
+import React from 'react'
 
 const Categories = ({ filter, setFilter }) => {
-
-  const category = [
-    {
-      name: 'All',
-      color: 'bg-gradient-to-br from-violet-600 to-fuchsia-600'
-    },
-    {
-      name: 'Work',
-      color: 'bg-blue-500'
-    },
-    {
-      name: 'Personal',
-      color: 'bg-green-500'
-    },
-    {
-      name: 'Urgent',
-      color: 'bg-red-500'
-    },
-    {
-      name: "Learning",
-      color: 'bg-yellow-500'
-    },
-    {
-      name: "Health",
-      color: 'bg-pink-500'
-    },
-    {
-      name: "Finance",
-      color: 'bg-teal-500'
-    }
-  ]
 
   return (
     <div className='flex items-center mt-10 flex-col w-full'>
       <h1 className='text-2xl font-bold text-left background-clip'>Categories:</h1>
 
-      <div className='flex flex-wrap gap-3'>
-        {category.map((cat) => (
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.9 }}
-            key={cat.name}
-            onClick={() => setFilter(cat.name)}
-            className={`m-2 p-2 w-30 text-sm rounded-lg text-black cursor-pointer
-            ${filter === cat.name
-                ? cat.color + " text-white"
-                : "bg-gray-100 text-gray-700 border border-gray-200 hover:bg-purple-200"
-              }`}
-          >
-            {cat.name}
-          </motion.div>
-        ))}
+      <div className='flex justify-center items-center gap-3'>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setFilter("All")}
+          className={`m-2 p-2 w-30 text-sm rounded-lg text-black cursor-pointer
+              ${filter === "All"
+                  ?  "bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white"
+                  : "bg-gray-100 text-gray-700 border border-gray-200 hover:bg-purple-200"
+                }`}
+        >
+            📋 All
+        </motion.div>
+  
+        <div className='flex flex-wrap gap-3'>
+          {categories.map((cat) => (
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.9 }}
+              key={cat.name}
+              onClick={() => setFilter(cat.name)}
+              className={`m-2 p-2 w-30 text-sm rounded-lg text-black cursor-pointer
+              ${filter === cat.name
+                  ? `${cat.styles.gradient} text-white`
+                  : "bg-gray-100 text-gray-700 border border-gray-200 hover:bg-purple-200"
+                }`}
+            >
+              {cat.label}
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       <div className='mt-10 flex items-center justify-evenly w-full  rounded-2xl'>
-        
-        <h1 
+
+        <h1
           onClick={() => setFilter("All")}
           className='sections border border-purple-200 shadow-sm shadow-purple-300'
         >All</h1>
 
 
-        <h1 
+        <h1
           onClick={() => setFilter("Active")}
           className='sections border border-red-200 shadow-sm shadow-red-300'
         >Active</h1>
 
-        <h1 
+        <h1
           onClick={() => setFilter("Completed")}
           className='sections border border-green-200 shadow-sm shadow-green-300'
         >
