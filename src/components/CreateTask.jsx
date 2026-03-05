@@ -109,7 +109,8 @@ const CreateTask = ({ closeModal, addTask }) => {
                             setDescription("")
                             closeModal()
 
-                        }}>
+                        }}
+                        >
                         ✨ Create Task
                     </Buttons>
                 </div>

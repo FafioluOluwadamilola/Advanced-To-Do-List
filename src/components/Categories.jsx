@@ -1,6 +1,6 @@
 // import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { CircleCheck } from 'lucide-react'
+import { ArrowDownWideNarrow, CircleCheck, ToggleRight } from 'lucide-react'
 import { label } from 'motion/react-client'
 import { categories } from '../data/categories'
 import React from 'react'
@@ -18,13 +18,13 @@ const Categories = ({ filter, setFilter }) => {
           onClick={() => setFilter("All")}
           className={`m-2 p-2 w-30 text-sm rounded-lg text-black cursor-pointer
               ${filter === "All"
-                  ?  "bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white"
-                  : "bg-gray-100 text-gray-700 border border-gray-200 hover:bg-purple-200"
-                }`}
+              ? "bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white"
+              : "bg-gray-100 text-gray-700 border border-gray-200 hover:bg-purple-200"
+            }`}
         >
-            📋 All
+          📋 All
         </motion.div>
-  
+
         <div className='flex flex-wrap gap-3'>
           {categories.map((cat) => (
             <motion.div
@@ -44,24 +44,26 @@ const Categories = ({ filter, setFilter }) => {
         </div>
       </div>
 
-      <div className='mt-10 flex items-center justify-evenly w-full  rounded-2xl'>
+      <div className='btns-3'>
+        <button
+          className={'btn' + (filter === 'All' ? ' bg-[#FBF4FF]/90' : '')}
+          onClick={() => setFilter('All')}>
+          <ArrowDownWideNarrow />
+          All
+        </button>
 
-        <h1
-          onClick={() => setFilter("All")}
-          className='sections border border-purple-200 shadow-sm shadow-purple-300'
-        >All</h1>
+        <button
+          className={'btn' + (filter === 'Active' ? ' bg-[#FBF4FF]/90' : '')}
+          onClick={() => setFilter('Active')}>
+          <ToggleRight />
+          Active
+        </button>
 
-
-        <h1
-          onClick={() => setFilter("Active")}
-          className='sections border border-red-200 shadow-sm shadow-red-300'
-        >Active</h1>
-
-        <h1
-          onClick={() => setFilter("Completed")}
-          className='sections border border-green-200 shadow-sm shadow-green-300'
-        >
-          Completed <CircleCheck className="inline ml-2 w-4 h-4 text-green-500" /></h1>
+        <button
+          className={'btn' + (filter === 'Completed' ? ' bg-[#FBF4FF]/90' : '')} onClick={() => setFilter('Completed')}>
+          <CircleCheck />
+          Completed
+        </button>
       </div>
 
     </div>

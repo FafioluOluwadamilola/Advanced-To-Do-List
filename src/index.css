@@ -37,10 +37,13 @@
   .submit {
     @apply m-4 flex items-center justify-end gap-4;
   }
-  .sections{
-    @apply cursor-pointer p-2 w-full rounded-2xl hover:bg-gray-100;
-  }
-  .task-container{
+  .task-container {
     @apply w-full h-auto bg-white/30 mt-10 border border-purple-100 gap-4 rounded-lg shadow-lg shadow-gray-400;
+  }
+  .btns-3 {
+    @apply mt-10 w-full bg-[#ECECF0] rounded-4xl mb-4 flex justify-evenly;
+  }
+  .btn {
+    @apply w-full flex justify-center rounded-4xl cursor-pointer gap-2 p-2 m-1 hover:bg-white/90 transition-colors;
   }
 }
