@@ -44,7 +44,7 @@ const Categories = ({ filter, setFilter }) => {
 
 
 
-      <div className='btns-3'>
+      <div className='btns-3 btns-media'>
         <button
           className={'btn' + (filter === 'All' ? ' bg-[#FBF4FF]/90' : '')}
           onClick={() => setFilter('All')}>
@@ -62,7 +62,7 @@ const Categories = ({ filter, setFilter }) => {
         <button
           className={'btn' + (filter === 'Completed' ? ' bg-[#FBF4FF]/90' : '')} onClick={() => setFilter('Completed')}>
           <CircleCheck />
-          Completed
+          Done
         </button>
       </div>
 

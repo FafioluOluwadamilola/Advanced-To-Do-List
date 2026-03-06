@@ -68,4 +68,10 @@
   .categoriesQuery {
     @apply grid grid-cols-2 gap-1 text-center;
   }
+  .btns-media{
+    @apply text-sm w-full;
+  }
+  .task-container {
+    @apply mt-1;
+  }
 }
