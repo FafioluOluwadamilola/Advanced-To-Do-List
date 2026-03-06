@@ -66,6 +66,6 @@
     @apply mt-4;
   }
   .categoriesQuery {
-    @apply mt-2;
+    @apply grid grid-cols-2 gap-1 text-center;
   }
 }
