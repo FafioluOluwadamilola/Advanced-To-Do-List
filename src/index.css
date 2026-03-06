@@ -74,4 +74,7 @@
   .task-container {
     @apply mt-1;
   }
+  .madeTaskQuery {
+    @apply flex items-center justify-between gap-3;
+  }
 }

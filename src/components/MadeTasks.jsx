@@ -23,7 +23,7 @@ const MadeTasks = ({ tasks, toggleTaskStatus, deleteTask, startEditTask }) => {
                             whileHover={{ scale: 1.01 }}
                             className='w-full p-3 border-b border-purple-100'
                         >
-                            <div className='flex items-center justify-between'>
+                            <div className='madeTaskQuery flex items-center justify-between'>
 
                                 <div className='flex flex-col'>
                                     {/* {LEFT SIDE} */}
