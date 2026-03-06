@@ -1,11 +1,12 @@
 import React from 'react'
-import Buttons from './ui/buttons'
+import Buttons from './Buttons'
 import { motion } from 'framer-motion'
 import { Sparkles, Plus } from 'lucide-react'
 
 const Header = ({ OpenModal }) => {
     return (
         <div className="header">
+            
             <div className="leftside">
 
                 <motion.div 
@@ -30,7 +31,7 @@ const Header = ({ OpenModal }) => {
             {/* RIGHT SIDE */}
             <Buttons
                 onClick={OpenModal}
-                className=" flex gap-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white shadow-lg shadow-violet-500/50">
+                className="rightsideQuery flex gap-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white shadow-lg shadow-violet-500/50">
                 <Plus className="size-5" />
                 New Task
             </Buttons>

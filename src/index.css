@@ -6,15 +6,16 @@
     box-sizing: border-box;
   }
   body {
+    padding: 2rem;
     width: 100vw;
     min-height: 100vh;
     @apply bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-900;
   }
 }
 
-@layer components {
+@layer utilities {
   .container {
-    @apply max-w-3xl mx-auto w-full bg-[#FBF4FF]/90 rounded-lg p-8;
+    @apply max-w-3xl mx-auto w-full text-[min(100%,_40rem)] bg-[#FBF4FF]/90 rounded-lg p-8;
   }
   .background {
     @apply p-3 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-2xl shadow-lg;
@@ -45,5 +46,26 @@
   }
   .btn {
     @apply w-full flex justify-center rounded-4xl cursor-pointer gap-2 p-2 m-1 hover:bg-white/90 transition-colors;
+  }
+}
+
+
+/* Phones */
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+  .header{
+    flex-direction: column;
+    align-items: center;
+  }
+  .header .leftside {
+    @apply flex items-center justify-center gap-2;
+  }
+  .rightsideQuery {
+    @apply mt-4;
+  }
+  .categoriesQuery {
+    @apply mt-2;
   }
 }

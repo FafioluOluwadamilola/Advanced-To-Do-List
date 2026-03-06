@@ -1,7 +1,6 @@
 // import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowDownWideNarrow, CircleCheck, ToggleRight } from 'lucide-react'
-import { label } from 'motion/react-client'
 import { categories } from '../data/categories'
 import React from 'react'
 
@@ -11,8 +10,9 @@ const Categories = ({ filter, setFilter }) => {
     <div className='flex items-center mt-10 flex-col w-full'>
       <h1 className='text-2xl font-bold text-left background-clip'>Categories:</h1>
 
-      <div className='flex justify-center items-center gap-3'>
-        <motion.div
+        <div className='mt-2 flex items-center justify-center flex-wrap gap-2'>
+
+          <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setFilter("All")}
@@ -25,7 +25,6 @@ const Categories = ({ filter, setFilter }) => {
           📋 All
         </motion.div>
 
-        <div className='flex flex-wrap gap-3'>
           {categories.map((cat) => (
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -42,7 +41,8 @@ const Categories = ({ filter, setFilter }) => {
             </motion.div>
           ))}
         </div>
-      </div>
+
+
 
       <div className='btns-3'>
         <button

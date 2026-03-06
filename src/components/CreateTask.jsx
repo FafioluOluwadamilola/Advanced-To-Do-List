@@ -1,7 +1,7 @@
 import { Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Buttons from '../components/ui/Buttons';
+import Buttons from './Buttons';
 import React from 'react'
 import { categories } from '../data/categories';
 
