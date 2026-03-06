@@ -5,11 +5,13 @@ import Buttons from '../components/ui/Buttons';
 import React from 'react'
 import { categories } from '../data/categories';
 
-const CreateTask = ({ closeModal, addTask }) => {
+const CreateTask = ({ closeModal, addTask, editingTask }) => {
 
-    const [selectedButton, setSelectedButton] = useState("Work")
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
+    const [title, setTitle] = useState(editingTask?.title || "")
+    const [description, setDescription] = useState(editingTask?.description || "")
+    const [selectedButton, setSelectedButton] = useState(editingTask?.category || "Work")
+    
+    
 
 
     return (
@@ -23,7 +25,9 @@ const CreateTask = ({ closeModal, addTask }) => {
                 </div>
 
                 <div>
-                    <h2 className='text-2xl font-bold background-clip text-left'>Create New Task</h2>
+                    <h2 className='text-2xl font-bold background-clip text-left'>
+                        {editingTask ? "Edit Your Task" : "Create a New Task"}
+                    </h2>
                 </div>
 
             </div>
@@ -45,6 +49,7 @@ const CreateTask = ({ closeModal, addTask }) => {
 
                         <input
                             type="text"
+                            value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             placeholder="Complete the Design Mockups...."
                             className="w-full p-3 border border-gray-400 outline-none rounded-lg bg-white/50 transition-all duration-300 focus:shadow-[0_0_20px_rgba(128,128,128,0.4)]" />
@@ -60,6 +65,7 @@ const CreateTask = ({ closeModal, addTask }) => {
                         <textarea
                             rows={4}
                             type="text"
+                            value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder="Add more notes or details about this task."
                             className=" w-full p-3 bg-white/50 rounded-lg border border-gray-400 outline-none transition-all duration-300 focus:shadow-[0_0_20px_rgba(128,128,128,0.4)]" />
@@ -96,11 +102,11 @@ const CreateTask = ({ closeModal, addTask }) => {
                             if(!title.trim()) return
 
                             const newTask = {
-                                id: Date.now(),
+                                id: editingTask ? editingTask.id : Date.now(),
                                 title,
                                 description,
                                 category: selectedButton,
-                                status: "Active"
+                                status: editingTask ? editingTask.status : "Active"
                             }
 
                             addTask(newTask)
@@ -111,7 +117,7 @@ const CreateTask = ({ closeModal, addTask }) => {
 
                         }}
                         >
-                        ✨ Create Task
+                        {editingTask ? "✏️ Update Task" : "✨ Create Task"}
                     </Buttons>
                 </div>
 

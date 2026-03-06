@@ -7,14 +7,14 @@
   }
   body {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     @apply bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-900;
   }
 }
 
 @layer components {
   .container {
-    @apply w-full h-auto bg-[#FBF4FF]/90 rounded-lg p-8;
+    @apply max-w-3xl mx-auto w-full bg-[#FBF4FF]/90 rounded-lg p-8;
   }
   .background {
     @apply p-3 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-2xl shadow-lg;

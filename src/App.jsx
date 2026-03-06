@@ -11,6 +11,8 @@ function App() {
 
   const [isTaskOpen, setIsTaskOpen] = useState(false)
 
+  const [editingTask, setEditingTask] = useState(null)
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -35,10 +37,19 @@ function App() {
     }
   ])
 
-  
+
 
   const addTask = (newTask) => {
-    setTasks((prevTasks) => [newTask, ...prevTasks])
+    setTasks(prevTasks => {
+      const exist = prevTasks.some(task => task.id === newTask.id)
+
+      if(exist) {
+        return prevTasks.map(task => 
+          task.id === newTask.id ? newTask : task)
+      }
+      
+      return [newTask, ...prevTasks]
+    })
   }
 
 
@@ -50,20 +61,29 @@ function App() {
     if (filter === "Completed") return task.status === "Completed";
 
     return task.category.toLowerCase() === filter.toLowerCase();
-  })  
+  })
 
 
   const toggleTaskStatus = (id) => {
-    setTasks(prevTasks => prevTasks.map(task => 
-      task.id === id ? 
-      {
-        ...task,
-        status: task.status === "Active" ? "Completed" : "Active"
-      } : task
+    setTasks(prevTasks => prevTasks.map(task =>
+      task.id === id ?
+        {
+          ...task,
+          status: task.status === "Active" ? "Completed" : "Active"
+        } : task
     ))
 
   }
 
+
+  const deleteTask = (id) => {
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
+  }
+
+  const startEditTask = (task) => {
+    setEditingTask(task)
+    setIsTaskOpen(true)
+  }
 
   return (
 
@@ -77,7 +97,7 @@ function App() {
 
         <Header OpenModal={() => setIsTaskOpen(true)} />
 
-        <TaskState  
+        <TaskState
           tasks={tasks}
           filter={filter}
           setFilter={setFilter}
@@ -89,8 +109,12 @@ function App() {
             onClick={() => setIsTaskOpen(false)}>
             <div onClick={(e) => e.stopPropagation()}>
               <CreateTask
-                closeModal={() => setIsTaskOpen(false)}
+                closeModal={() => {
+                  setIsTaskOpen(false)
+                  setEditingTask(null)
+                }}
                 addTask={addTask}
+                editingTask={editingTask}
               />
             </div>
           </div>
@@ -98,7 +122,12 @@ function App() {
 
         <Categories filter={filter} setFilter={setFilter} />
 
-        <MadeTasks tasks={visibleTasks}  toggleTaskStatus={toggleTaskStatus}/>
+        <MadeTasks
+          tasks={visibleTasks}
+          toggleTaskStatus={toggleTaskStatus}
+          deleteTask={deleteTask}
+          startEditTask={startEditTask}
+        />
 
       </div>
     </motion.div>
