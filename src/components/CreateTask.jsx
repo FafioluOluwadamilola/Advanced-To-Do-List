@@ -16,7 +16,7 @@ const CreateTask = ({ closeModal, addTask, editingTask }) => {
 
     return (
 
-        <div className='task-creation'>
+        <div className='task-creation w-full max-w-[95%] sm:max-w-[550px] p-4 sm:p-6'>
 
             <div className='heading'>
 
@@ -25,7 +25,7 @@ const CreateTask = ({ closeModal, addTask, editingTask }) => {
                 </div>
 
                 <div>
-                    <h2 className='text-2xl font-bold background-clip text-left'>
+                    <h2 className='text-xl sm:text-2xl font-bold background-clip text-left'>
                         {editingTask ? "Edit Your Task" : "Create a New Task"}
                     </h2>
                 </div>
@@ -33,12 +33,12 @@ const CreateTask = ({ closeModal, addTask, editingTask }) => {
             </div>
 
             <div >
-                <p className='text-left text-lg text-gray-600 mt-2'>Fill in the details to create an awesome new task! ✨</p>
+                <p className='text-left text-sm sm:text-lg text-gray-600 mt-2'>Fill in the details to create an awesome new task! ✨</p>
             </div >
 
 
             <div>
-                <form className='flex flex-col p-3 gap-3 mt-4'>
+                <form className='flex flex-col p-2 sm:p-3 gap-3 mt-4'>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -74,7 +74,7 @@ const CreateTask = ({ closeModal, addTask, editingTask }) => {
 
                 </form>
 
-                <div className='grid grid-cols-3 gap-3 mt-3 p-2'>
+                <div className='grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 mt-3 p-2'>
                     {categories.map((cat) => (
                         <motion.div
                             key={cat.name}
@@ -83,7 +83,7 @@ const CreateTask = ({ closeModal, addTask, editingTask }) => {
                             transition={{ duration: 0.3, type: "spring", stiffness: 700, damping: 40 }}
                             whileTap={{ scale: 0.9 }}
                             whileHover={{ scale: 1.05 }}
-                            className={`px-4 py-2 rounded-lg font-medium cursor-pointer
+                            className={`px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg font-medium cursor-pointer
                                 ${selectedButton === cat.name ? "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-purple-500/30" : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"}`}
                             onClick={() => setSelectedButton(cat.name)}
                         >
@@ -94,7 +94,7 @@ const CreateTask = ({ closeModal, addTask, editingTask }) => {
                 </div>
 
 
-                <div className='submit'>
+                <div className='submit flex flex-col sm:flex-row gap-3 sm:gap-4'>
                     <Buttons onClick={closeModal} className='bg-white font-[32px] p-3 text-black cursor-pointer'>Cancel</Buttons>
                     <Buttons 
                         className='text-white p-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 cursor-pointer' 
