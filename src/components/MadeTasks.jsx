@@ -28,14 +28,14 @@ const MadeTasks = ({ tasks, toggleTaskStatus, deleteTask, startEditTask }) => {
                                 <div className='flex flex-col'>
                                     {/* {LEFT SIDE} */}
 
-                                    <div className='flex items-center gap-4'>
+                                    <div className='MDT-main flex items-center gap-3'>
                                         <input
                                             type="checkbox"
                                             checked={task.status === "Completed"}
                                             onChange={() => toggleTaskStatus(task.id)}
                                             className="w-4 h-4 bg-gradient-to-br from-violet-600 to-fuchsia-600 border-gray-300 rounded"
                                         />
-                                        <h2 className='text-lg font-semibold'>{task.title}</h2>
+                                        <h2 className='MDT-title text-lg font-semibold'>{task.title}</h2>
 
 
 
@@ -43,19 +43,19 @@ const MadeTasks = ({ tasks, toggleTaskStatus, deleteTask, startEditTask }) => {
                                         ${getCategoryColor?.styles.bg}
                                         ${getCategoryColor?.styles.text}
                                         ${getCategoryColor?.styles.border}
-                                         border text-gray-700 px-3 py-1 text-xs rounded-2xl font-semibold shadow-sm`}>
+                                         MDT-category border text-gray-700 px-3 py-1 text-xs rounded-2xl font-semibold shadow-sm`}>
                                             {task.category}
                                         </div>
 
                                     </div>
 
                                     <div className='flex items-start ml-8'>
-                                        <p className='text-sm text-gray-600'>{task.description}</p>
+                                        <p className='MDT-description text-sm text-gray-600'>{task.description}</p>
                                     </div>
 
                                 </div>
 
-                                < div className='flex gap-2 mr-9'>
+                                < div className='MDT-rightside flex gap-2 mr-9'>
                                     {/* {RIGHT SIDE} */}
                                     <motion.div
                                         whileHover={{ scale: 1.1 }}

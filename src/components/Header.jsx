@@ -18,7 +18,7 @@ const Header = ({ OpenModal }) => {
                 </motion.div>
 
                 <div>
-                    <h1 className="text-3xl font-bold text-purple-700 text-left">
+                    <h1 className="text-2xl sm:text-3xl font-bold text-purple-700 text-left">
                         TaskFlow Pro
                     </h1>
                     <p className="text-gray-500">
