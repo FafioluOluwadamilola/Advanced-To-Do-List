@@ -31,7 +31,7 @@ const Header = ({ OpenModal }) => {
             {/* RIGHT SIDE */}
             <Buttons
                 onClick={OpenModal}
-                className="rightsideQuery flex gap-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white shadow-lg shadow-violet-500/50">
+                className="rightsideQuery cursor-pointer flex gap-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white shadow-md shadow-violet-500/50">
                 <Plus className="size-5" />
                 New Task
             </Buttons>

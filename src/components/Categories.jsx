@@ -13,7 +13,6 @@ const Categories = ({ filter, setFilter }) => {
       <div className='categoriesQuery mt-2 flex items-center justify-center flex-wrap gap-2'>
 
         <motion.div
-          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setFilter("All")}
           className={`m-2 p-2 w-30 text-sm rounded-lg text-black cursor-pointer
@@ -27,7 +26,6 @@ const Categories = ({ filter, setFilter }) => {
 
         {categories.map((cat) => (
           <motion.div
-            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
             key={cat.name}
             onClick={() => setFilter(cat.name)}
