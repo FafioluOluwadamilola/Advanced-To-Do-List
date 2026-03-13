@@ -84,7 +84,7 @@ const CreateTask = ({ closeModal, addTask, editingTask }) => {
                             whileTap={{ scale: 0.9 }}
                             whileHover={{ scale: 1.05 }}
                             className={`px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg font-medium cursor-pointer
-                                ${selectedButton === cat.name ? "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-purple-500/30" : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"}`}
+                                ${selectedButton === cat.name ? "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-md shadow-purple-500/30" : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"}`}
                             onClick={() => setSelectedButton(cat.name)}
                         >
                             {cat.label}

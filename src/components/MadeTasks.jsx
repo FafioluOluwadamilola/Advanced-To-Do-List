@@ -16,11 +16,11 @@ const MadeTasks = ({ tasks, toggleTaskStatus, deleteTask, startEditTask }) => {
 
                     return (
                         <motion.div
+                            layout
                             key={task.id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3 }}
-                            whileHover={{ scale: 1.01 }}
+                            transition={{ duration: 0.2 }}
                             className='w-full p-3 border-b border-purple-100'
                         >
                             <div className='madeTaskQuery flex items-center justify-between'>
@@ -58,6 +58,7 @@ const MadeTasks = ({ tasks, toggleTaskStatus, deleteTask, startEditTask }) => {
                                 < div className='MDT-rightside flex gap-2 mr-9'>
                                     {/* {RIGHT SIDE} */}
                                     <motion.div
+                                        layout
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.9 }}
                                     >
@@ -68,6 +69,7 @@ const MadeTasks = ({ tasks, toggleTaskStatus, deleteTask, startEditTask }) => {
                                     </motion.div>
 
                                     <motion.div
+                                        layout
                                         whileHover={{ scale: 1.2 }}
                                         whileTap={{ scale: 0.9 }}
                                     >

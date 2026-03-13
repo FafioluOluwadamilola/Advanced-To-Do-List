@@ -105,7 +105,7 @@ function App() {
 
         {isTaskOpen &&
           <div
-            className='h-screen fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm'
+            className='h-screen fixed inset-0 z-50 flex items-center justify-center bg-black/60'
             onClick={() => setIsTaskOpen(false)}>
             <div onClick={(e) => e.stopPropagation()}>
               <CreateTask
