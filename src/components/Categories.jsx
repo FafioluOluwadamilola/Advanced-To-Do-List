@@ -14,6 +14,7 @@ const Categories = ({ filter, setFilter }) => {
 
         <motion.div
           whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.3 }}
           onClick={() => setFilter("All")}
           className={`m-2 p-2 w-30 text-sm rounded-lg text-black cursor-pointer
               ${filter === "All"
@@ -26,8 +27,9 @@ const Categories = ({ filter, setFilter }) => {
 
         {categories.map((cat) => (
           <motion.div
-            whileTap={{ scale: 0.9 }}
             key={cat.name}
+            whileTap={{ scale: 0.9 }}
+            transition={{ duration: 0.3 }}
             onClick={() => setFilter(cat.name)}
             className={`m-2 p-2 w-30 text-sm rounded-lg text-black cursor-pointer
               ${filter === cat.name

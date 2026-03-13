@@ -13,7 +13,7 @@ const buttons = ({
             <motion.button
                 className={` p-2 rounded-lg ${className || ''}`}
                 whileTap={{ scale: 0.9}}
-                transition={{ type: "spring", stiffness, damping }}
+                transition={{ duration: 0.3, type: "spring", stiffness, damping }}
                 onClick={onClick}
             >
                 {children}
